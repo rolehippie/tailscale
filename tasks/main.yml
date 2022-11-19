@@ -1,0 +1,84 @@
+# Standards: 1.2
+---
+- name: Download repo key
+  apt_key:
+    url: https://pkgs.tailscale.com/stable/ubuntu/focal.noarmor.gpg
+    id: 2596A99EAAB33821893C0A79458CA832957F5868
+    state: present
+  tags:
+    - tailscale
+
+- name: Add apt repository
+  apt_repository:
+    repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+    filename: tailscale
+    update_cache: True
+    state: present
+  tags:
+    - tailscale
+
+- name: Install required packages
+  loop:
+    - tailscale
+  package:
+    name: "{{ item }}"
+    state: present
+  tags:
+    - tailscale
+
+- name: Write default config
+  notify:
+    - Restart tailscale
+  template:
+    src: default.j2
+    dest: /etc/default/tailscaled
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - tailscale
+
+- name: Start tailscale service
+  systemd:
+    name: tailscaled
+    state: started
+    daemon_reload: True
+    masked: False
+    enabled: True
+  tags:
+    - tailscale
+
+- name: Write autoconnect script
+  when: tailscale_authkey | default(False)
+  template:
+    src: script.j2
+    dest: /usr/sbin/tailscaled-autoconnect
+    owner: root
+    group: root
+    mode: u=rwx,g=,o=
+  tags:
+    - tailscale
+
+- name: Write autoconnect service
+  when: tailscale_authkey | default(False)
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/tailscaled-autoconnect.service
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+  tags:
+    - tailscale
+
+- name: Start autoconnect service
+  when: tailscale_authkey | default(False)
+  systemd:
+    name: tailscaled-autoconnect
+    state: started
+    daemon_reload: True
+    masked: False
+    enabled: True
+  tags:
+    - tailscale
+
+...

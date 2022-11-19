@@ -1,0 +1,11 @@
+[Unit]
+Description=Automatic connection for Tailscale
+After=network-pre.target tailscaled.service
+Wants=network-pre.target tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/tailscaled-autoconnect
+
+[Install]
+WantedBy=multi-user.target
