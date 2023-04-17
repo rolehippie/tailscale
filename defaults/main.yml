@@ -10,6 +10,6 @@ tailscale_flags:
 tailscale_authkey:
 
 # @var tailscale_keyring:description: Path for the repository keyring
-tailscale_keyring: /usr/share/keyrings/tailscale.gpg
+tailscale_keyring: /usr/share/keyrings/tailscale-archive-keyring.gpg
 
 ...
