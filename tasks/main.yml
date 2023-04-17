@@ -1,23 +1,15 @@
 # Standards: 1.2
 ---
-- name: Remove legacy key
-  apt_key:
-    id: 2596A99EAAB33821893C0A79458CA832957F5868
-    keyring: /etc/apt/trusted.gpg
-    state: absent
-  tags:
-    - tailscale
-
 - name: Download repo key
   get_url:
     url: https://pkgs.tailscale.com/stable/ubuntu/focal.noarmor.gpg
-    dest: /etc/apt/trusted.gpg.d/tailscale.gpg
+    dest: "{{ tailscale_keyring }}"
   tags:
     - tailscale
 
 - name: Add apt repository
   apt_repository:
-    repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+    repo: "deb [signed-by={{ tailscale_keyring }}] https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
     filename: tailscale
     update_cache: True
     state: present

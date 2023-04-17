@@ -9,4 +9,7 @@ tailscale_flags:
 # @var tailscale_authkey:description: Autconnect tailscaled
 tailscale_authkey:
 
+# @var tailscale_keyring:description: Path for the repository keyring
+tailscale_keyring: /usr/share/keyrings/tailscale.gpg
+
 ...
