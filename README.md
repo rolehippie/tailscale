@@ -19,6 +19,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 - [Default Variables](#default-variables)
   - [tailscale_authkey](#tailscale_authkey)
   - [tailscale_flags](#tailscale_flags)
+  - [tailscale_keyring](#tailscale_keyring)
   - [tailscale_port](#tailscale_port)
 - [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
@@ -52,6 +53,16 @@ Flags for tailscaled
 
 ```YAML
 tailscale_flags:
+```
+
+### tailscale_keyring
+
+Path for the repository keyring
+
+#### Default value
+
+```YAML
+tailscale_keyring: /usr/share/keyrings/tailscale.gpg
 ```
 
 ### tailscale_port
