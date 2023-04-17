@@ -62,7 +62,7 @@ Path for the repository keyring
 #### Default value
 
 ```YAML
-tailscale_keyring: /usr/share/keyrings/tailscale.gpg
+tailscale_keyring: /usr/share/keyrings/tailscale-archive-keyring.gpg
 ```
 
 ### tailscale_port
