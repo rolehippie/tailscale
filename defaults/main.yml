@@ -1,4 +1,3 @@
-# Standards: 1.2
 ---
 # @var tailscale_port:description: Port for tailscaled
 tailscale_port: 41641
