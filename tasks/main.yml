@@ -1,14 +1,13 @@
-# Standards: 1.2
 ---
 - name: Download repo key
-  get_url:
+  ansible.builtin.get_url:
     url: https://pkgs.tailscale.com/stable/ubuntu/focal.noarmor.gpg
     dest: "{{ tailscale_keyring }}"
   tags:
     - tailscale
 
 - name: Add apt repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb [signed-by={{ tailscale_keyring }}] https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
     filename: tailscale
     update_cache: True
@@ -19,7 +18,7 @@
 - name: Install required packages
   loop:
     - tailscale
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   tags:
@@ -28,7 +27,7 @@
 - name: Write default config
   notify:
     - Restart tailscale
-  template:
+  ansible.builtin.template:
     src: default.j2
     dest: /etc/default/tailscaled
     owner: root
@@ -38,7 +37,7 @@
     - tailscale
 
 - name: Start tailscale service
-  systemd:
+  ansible.builtin.systemd:
     name: tailscaled
     state: started
     daemon_reload: True
@@ -49,7 +48,7 @@
 
 - name: Write autoconnect script
   when: tailscale_authkey | default(False)
-  template:
+  ansible.builtin.template:
     src: script.j2
     dest: /usr/sbin/tailscaled-autoconnect
     owner: root
@@ -60,7 +59,7 @@
 
 - name: Write autoconnect service
   when: tailscale_authkey | default(False)
-  template:
+  ansible.builtin.template:
     src: service.j2
     dest: /etc/systemd/system/tailscaled-autoconnect.service
     owner: root
@@ -71,7 +70,7 @@
 
 - name: Start autoconnect service
   when: tailscale_authkey | default(False)
-  systemd:
+  ansible.builtin.systemd:
     name: tailscaled-autoconnect
     state: started
     daemon_reload: True
