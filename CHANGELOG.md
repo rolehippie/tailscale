@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0](https://github.com/rolehippie/tailscale/compare/v1.1.1...v2.0.0) (2024-02-12)
+
+
+### Features
+
+* drop support for ubuntu 18.04 ([035a73b](https://github.com/rolehippie/tailscale/commit/035a73b748c0e9be707fc6bca3c797f4de35cf0c))
+* used full qualified collection names ([f274b3b](https://github.com/rolehippie/tailscale/commit/f274b3b52df48f63bafdeea5c66e30f9f395e8a7))
+
 ## [1.1.1](https://github.com/rolehippie/tailscale/compare/v1.1.0...v1.1.1) (2023-04-17)
 
 
