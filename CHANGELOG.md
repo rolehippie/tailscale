@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/rolehippie/tailscale/compare/v2.0.0...v2.1.0) (2025-10-18)
+
+
+### Features
+
+* apply new repo structure and update linting ([9f45cfa](https://github.com/rolehippie/tailscale/commit/9f45cfaf8363d3a027f5730e3fb858b4f52ed729))
+
 ## [2.0.0](https://github.com/rolehippie/tailscale/compare/v1.1.1...v2.0.0) (2024-02-12)
 
 
