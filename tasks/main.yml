@@ -1,8 +1,10 @@
 ---
 - name: Download repo key
   ansible.builtin.get_url:
-    url: https://pkgs.tailscale.com/stable/ubuntu/focal.noarmor.gpg
+    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.noarmor.gpg"
     dest: "{{ tailscale_keyring }}"
+    mode: u=rw,g=r,o=r
+    force: true
   tags:
     - tailscale
 
@@ -10,7 +12,7 @@
   ansible.builtin.apt_repository:
     repo: "deb [signed-by={{ tailscale_keyring }}] https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
     filename: tailscale
-    update_cache: True
+    update_cache: true
     state: present
   tags:
     - tailscale
@@ -40,14 +42,15 @@
   ansible.builtin.systemd:
     name: tailscaled
     state: started
-    daemon_reload: True
-    masked: False
-    enabled: True
+    daemon_reload: true
+    masked: false
+    enabled: true
   tags:
     - tailscale
 
 - name: Write autoconnect script
-  when: tailscale_authkey | default(False)
+  when:
+    - false if tailscale_authkey is none else (tailscale_authkey | length > 0)
   ansible.builtin.template:
     src: script.j2
     dest: /usr/sbin/tailscaled-autoconnect
@@ -58,7 +61,8 @@
     - tailscale
 
 - name: Write autoconnect service
-  when: tailscale_authkey | default(False)
+  when:
+    - false if tailscale_authkey is none else (tailscale_authkey | length > 0)
   ansible.builtin.template:
     src: service.j2
     dest: /etc/systemd/system/tailscaled-autoconnect.service
@@ -69,13 +73,14 @@
     - tailscale
 
 - name: Start autoconnect service
-  when: tailscale_authkey | default(False)
+  when:
+    - false if tailscale_authkey is none else (tailscale_authkey | length > 0)
   ansible.builtin.systemd:
     name: tailscaled-autoconnect
     state: started
-    daemon_reload: True
-    masked: False
-    enabled: True
+    daemon_reload: true
+    masked: false
+    enabled: true
   tags:
     - tailscale
 
