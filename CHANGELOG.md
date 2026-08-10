@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/rolehippie/tailscale/compare/v2.2.0...v2.3.0) (2026-08-10)
+
+### Dependencies
+
+* **minor:** update dependency pipx:ansible-doctor to v8.4.0 ([#48](https://github.com/rolehippie/tailscale/issues/48)) ([fc1f0f9](https://github.com/rolehippie/tailscale/commit/fc1f0f9749ea9494aa9f873f125e5b6a40e29c02))
+* **patch:** update dependency python to v3.14.7 ([#46](https://github.com/rolehippie/tailscale/issues/46)) ([f2bc29d](https://github.com/rolehippie/tailscale/commit/f2bc29d8d3ed673510ea0e45670c1c04b811f948))
+
 ## [2.2.0](https://github.com/rolehippie/tailscale/compare/v2.1.0...v2.2.0) (2026-07-27)
 
 ## [2.1.0](https://github.com/rolehippie/tailscale/compare/v2.0.0...v2.1.0) (2025-10-18)
