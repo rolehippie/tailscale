@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.0](https://github.com/rolehippie/tailscale/compare/v2.3.0...v2.4.0) (2026-08-17)
+
+### Dependencies
+
+* **minor:** update dependency pipx:ansible-lint to v26.8.0 ([#51](https://github.com/rolehippie/tailscale/issues/51)) ([7a9a39b](https://github.com/rolehippie/tailscale/commit/7a9a39bb8ef931fca0f332e8741a69cdff772cb9))
+* **patch:** update dependency pipx:ansible-core to v2.21.3 ([#49](https://github.com/rolehippie/tailscale/issues/49)) ([0430af4](https://github.com/rolehippie/tailscale/commit/0430af45ca78601e3ade5547c08b9865c3afdfda))
+* **patch:** update dependency pre-commit to v4.6.2 ([#50](https://github.com/rolehippie/tailscale/issues/50)) ([b1ca1f4](https://github.com/rolehippie/tailscale/commit/b1ca1f446d717e6af6a0547c64d390becee2bc6b))
+
 ## [2.3.0](https://github.com/rolehippie/tailscale/compare/v2.2.0...v2.3.0) (2026-08-10)
 
 ### Dependencies
