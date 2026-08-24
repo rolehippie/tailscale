@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.0](https://github.com/rolehippie/tailscale/compare/v2.4.0...v2.5.0) (2026-08-24)
+
+### Dependencies
+
+* **minor:** update dependency pipx:molecule to v26.8.0 ([#52](https://github.com/rolehippie/tailscale/issues/52)) ([f279ccb](https://github.com/rolehippie/tailscale/commit/f279ccbc9fc668ee216900bfc76e20e817481efc))
+
 ## [2.4.0](https://github.com/rolehippie/tailscale/compare/v2.3.0...v2.4.0) (2026-08-17)
 
 ### Dependencies
