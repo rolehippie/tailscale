@@ -1,7 +1,7 @@
 ---
 - name: Download repo key
   ansible.builtin.get_url:
-    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.noarmor.gpg"
+    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_facts['distribution_release'] }}.noarmor.gpg"
     dest: "{{ tailscale_keyring }}"
     mode: u=rw,g=r,o=r
     force: true
@@ -10,7 +10,7 @@
 
 - name: Add apt repository
   ansible.builtin.apt_repository:
-    repo: "deb [signed-by={{ tailscale_keyring }}] https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+    repo: "deb [signed-by={{ tailscale_keyring }}] https://pkgs.tailscale.com/stable/ubuntu {{ ansible_facts['distribution_release'] }} main"
     filename: tailscale
     update_cache: true
     state: present
