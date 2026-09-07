@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/rolehippie/tailscale/compare/v2.5.1...v2.6.0) (2026-09-07)
+
+### Features
+
+* add separate requirements for molecule run ([edaf69c](https://github.com/rolehippie/tailscale/commit/edaf69c015ce8b70902077caa549227901219d1e))
+* use new required facts as attributes ([2295da8](https://github.com/rolehippie/tailscale/commit/2295da8544de5b5bcdc541896e0af1ce3172e78a))
+
 ## [2.5.1](https://github.com/rolehippie/tailscale/compare/v2.5.0...v2.5.1) (2026-08-31)
 
 ### Dependencies
